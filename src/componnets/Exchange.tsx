@@ -17,9 +17,10 @@ const Exchange: React.FC = props => {
     const [activeInputValue, setActiveInputValue] = useRoundedValue(0);
 
     const inactiveInputValue = useMemo(() => {
-        if (activeInput === transactionDirection) {
+        if (activeInput === transactionDirection) { // first input
             return Math.round(activeInputValue * exchnageRate * 100)/100;
         }
+        // second input
         return Math.round(activeInputValue / exchnageRate * 100)/100;
 
     }, [activeInput, activeInputValue, exchnageRate, transactionDirection])

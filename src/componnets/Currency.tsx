@@ -24,6 +24,8 @@ const Currency: React.FC <Props> = props => {
             } else {
                 setShowError(false);
             }
+        } else {
+            setShowError(false);
         }
     }, [props.value, props.balance, props.buyOrSell]);
     
