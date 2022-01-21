@@ -8,6 +8,7 @@
 .App > div {
   width: 50vw;
   min-width: 400px;
+  padding: 20px;
 }
 
 html {
