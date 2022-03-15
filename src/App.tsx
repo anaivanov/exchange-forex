@@ -1,5 +1,5 @@
 import './App.css';
-import Exchange from './componnets/Exchange';
+import Exchange from './components/Exchange';
 
 function App() {
 

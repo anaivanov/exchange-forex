@@ -10,7 +10,7 @@ export enum TransactionType { BUY="buy", SELL="sell" };
 
 const Exchange: React.FC = props => {
 
-    const [exchnageRate, setExchangeRate] = useState<number>(1);
+    const [exchangeRate, setExchangeRate] = useState<number>(1);
     const [transactionDirection, setTransactionDirection] = useState(TransactionType.SELL);
 
     const [activeInput, setActiveInput] = useState<TransactionType>(TransactionType.SELL);
@@ -18,12 +18,12 @@ const Exchange: React.FC = props => {
 
     const inactiveInputValue = useMemo(() => {
         if (activeInput === transactionDirection) { // first input
-            return Math.round(activeInputValue * exchnageRate * 100)/100;
+            return Math.round(activeInputValue * exchangeRate * 100)/100;
         }
         // second input
-        return Math.round(activeInputValue / exchnageRate * 100)/100;
+        return Math.round(activeInputValue / exchangeRate * 100)/100;
 
-    }, [activeInput, activeInputValue, exchnageRate, transactionDirection])
+    }, [activeInput, activeInputValue, exchangeRate, transactionDirection])
 
     const [showError, setShowError] = useState(false);
 
@@ -114,7 +114,7 @@ const Exchange: React.FC = props => {
                 {transactionDirection === TransactionType.BUY && "Buy "}
                 {baseCurrency}
             </h2>
-            <p className={classes.textPrimary}>1 {baseCurrency} = {exchnageRate} {toCurrency}</p>
+            <p className={classes.textPrimary}>1 {baseCurrency} = {exchangeRate} {toCurrency}</p>
             {availableAccounts.map((curr,i) => curr.fx === baseCurrency && 
                 <Currency onSelect={(e:any) => handleSelect(e.target.value, transactionDirection)} onInput={(e: any) => handleInput(e.target.value, transactionDirection !== activeInput)} balance={curr.balance} fx={curr.fx} icon={curr.icon} value={transactionDirection === activeInput ? activeInputValue : inactiveInputValue} key={i} buyOrSell={transactionDirection} availableAccounts={availableAccounts}/>
             )}
